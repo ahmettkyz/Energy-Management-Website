@@ -30,8 +30,8 @@ export default function ChatBot() {
       id: "welcome",
       role: "assistant",
       content:
-        language === "tr"
-          ? "Merhaba! Ben Apollo Yapay Zeka Asistanıyım. Apollo donanımları (Gateway Pro, Pulse Analyzer), GridOS yazılımı, BESS batarya optimizasyonu veya kurucumuz Rafail Kasapis hakkında her şeyi bana sorabilirsiniz."
+        language === "de"
+          ? "Hallo! Ich bin der Apollo KI-Assistent. Fragen Sie mich gerne nach unserer Hardware (Gateway Pro, Pulse Analyzer), der GridOS-Plattform, Peak-Shaving-Batterieoptimierung oder unserer Unternehmensgeschichte!"
           : "Hello! I am the Apollo AI Assistant. Ask me anything about our hardware (Gateway Pro, Pulse Analyzer), GridOS platform, battery storage optimization, or our mission!",
     },
   ]);
@@ -39,12 +39,12 @@ export default function ChatBot() {
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const starterQuestions =
-    language === "tr"
+    language === "de"
       ? [
-          "Güneş ve Kehanet felsefesi nedir?",
-          "Apollo Gateway Pro teknik özellikleri",
-          "BESS Batarya optimizasyonu nasıl çalışır?",
-          "Apollo'yu kim, ne zaman kurdu?",
+          "Was ist die Sonne & Prophezeiung-Philosophie?",
+          "Apollo Gateway Pro technische Details",
+          "Wie funktioniert BESS Batterieoptimierung?",
+          "Wer gründete Apollo Green Solutions?",
         ]
       : [
           "What is the Sun & Prophecy duality?",
@@ -126,8 +126,8 @@ export default function ChatBot() {
             ? {
                 ...msg,
                 content:
-                  language === "tr"
-                    ? "Üzgünüm, şu an bağlantı kurulamadı. Lütfen tekrar deneyin veya doğrudan /contact sayfamızdan iletişime geçin."
+                  language === "de"
+                    ? "Entschuldigung, derzeit konnte keine Verbindung hergestellt werden. Bitte versuchen Sie es erneut oder kontaktieren Sie uns über die Kontaktseite."
                     : "Sorry, I encountered an issue connecting. Please try again or reach out through our contact page.",
               }
             : msg
@@ -144,8 +144,8 @@ export default function ChatBot() {
         id: "welcome-reset",
         role: "assistant",
         content:
-          language === "tr"
-            ? "Görüşme sıfırlandı. Size nasıl yardımcı olabilirim?"
+          language === "de"
+            ? "Unterhaltung zurückgesetzt. Wie kann ich Ihnen heute helfen?"
             : "Conversation cleared. How can I help you today?",
       },
     ]);
@@ -164,15 +164,15 @@ export default function ChatBot() {
             whileTap={{ scale: 0.95 }}
             onClick={() => setIsOpen(true)}
             aria-label="Open Apollo AI Chatbot"
-            className="relative w-14 h-14 rounded-full bg-gradient-to-tr from-blue-600 via-blue-500 to-cyan-400 p-[2px] shadow-2xl shadow-blue-500/40 cursor-pointer flex items-center justify-center group"
+            className="relative w-14 h-14 rounded-full bg-gradient-to-tr from-emerald-600 via-green-600 to-teal-500 p-[2px] shadow-2xl shadow-emerald-600/40 cursor-pointer flex items-center justify-center group"
           >
-            <div className="w-full h-full bg-[#081326] rounded-full flex items-center justify-center text-cyan-400 group-hover:text-white transition-colors">
+            <div className="w-full h-full bg-slate-900 rounded-full flex items-center justify-center text-emerald-400 group-hover:text-white transition-colors">
               <MessageSquare className="w-6 h-6" />
             </div>
 
             {/* Glowing active pulse ring */}
-            <span className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-cyan-400 border-2 border-[#060D1A] flex items-center justify-center">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+            <span className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-emerald-500 border-2 border-slate-900 flex items-center justify-center">
+              <span className="w-2 h-2 rounded-full bg-emerald-300 animate-ping"></span>
             </span>
           </motion.button>
         )}
@@ -186,20 +186,20 @@ export default function ChatBot() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
             transition={{ type: "spring", damping: 25, stiffness: 280 }}
-            className="w-[92vw] sm:w-[420px] h-[580px] bg-[#070F1F] border border-blue-800/60 rounded-3xl shadow-2xl flex flex-col overflow-hidden backdrop-blur-xl"
+            className="w-[92vw] sm:w-[420px] h-[580px] bg-slate-950 border border-emerald-800/40 rounded-3xl shadow-2xl flex flex-col overflow-hidden backdrop-blur-xl"
           >
             {/* Window Header */}
-            <div className="p-4 sm:p-5 bg-gradient-to-r from-[#0C1935] via-[#09152B] to-[#0C1935] border-b border-blue-900/40 flex items-center justify-between">
+            <div className="p-4 sm:p-5 bg-gradient-to-r from-slate-900 via-slate-950 to-slate-900 border-b border-emerald-900/30 flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-blue-600 to-cyan-400 p-[1.5px]">
-                  <div className="w-full h-full bg-[#08101E] rounded-[10px] flex items-center justify-center text-cyan-400">
+                <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-emerald-600 to-teal-500 p-[1.5px]">
+                  <div className="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center text-emerald-400">
                     <Zap className="w-4 h-4" />
                   </div>
                 </div>
                 <div>
                   <div className="text-sm font-bold text-white flex items-center gap-1.5">
                     <span>Apollo AI</span>
-                    <span className="text-[10px] px-1.5 py-0.5 rounded bg-blue-950 text-cyan-400 border border-blue-800 font-mono">
+                    <span className="text-[10px] px-1.5 py-0.5 rounded bg-emerald-950/80 text-emerald-400 border border-emerald-800/60 font-mono">
                       Vercel AI SDK
                     </span>
                   </div>
@@ -213,16 +213,16 @@ export default function ChatBot() {
               <div className="flex items-center gap-1">
                 <button
                   onClick={handleReset}
-                  title={language === "tr" ? "Sohbeti Temizle" : "Clear Chat"}
+                  title={language === "de" ? "Chat zurücksetzen" : "Clear Chat"}
                   aria-label="Clear chat"
-                  className="w-8 h-8 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800/60 flex items-center justify-center transition-colors"
+                  className="w-8 h-8 rounded-lg text-slate-400 hover:text-white hover:bg-slate-850 flex items-center justify-center transition-colors"
                 >
                   <RotateCcw className="w-3.5 h-3.5" />
                 </button>
                 <button
                   onClick={() => setIsOpen(false)}
                   aria-label="Close chat"
-                  className="w-8 h-8 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800/60 flex items-center justify-center transition-colors"
+                  className="w-8 h-8 rounded-lg text-slate-400 hover:text-white hover:bg-slate-850 flex items-center justify-center transition-colors"
                 >
                   <X className="w-4 h-4" />
                 </button>
@@ -239,7 +239,7 @@ export default function ChatBot() {
                   }`}
                 >
                   {msg.role === "assistant" && (
-                    <div className="w-7 h-7 rounded-lg bg-blue-900/40 border border-blue-700/50 flex items-center justify-center text-cyan-400 shrink-0 mt-0.5">
+                    <div className="w-7 h-7 rounded-lg bg-emerald-950/60 border border-emerald-800/40 flex items-center justify-center text-emerald-400 shrink-0 mt-0.5">
                       <Bot className="w-4 h-4" />
                     </div>
                   )}
@@ -247,20 +247,20 @@ export default function ChatBot() {
                   <div
                     className={`max-w-[82%] p-3.5 rounded-2xl leading-relaxed whitespace-pre-line ${
                       msg.role === "user"
-                        ? "bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-br-none shadow-md shadow-blue-600/20"
-                        : "bg-[#0B172E] border border-blue-900/40 text-slate-200 rounded-bl-none"
+                        ? "bg-gradient-to-r from-emerald-600 to-teal-600 text-white rounded-br-none shadow-md shadow-emerald-600/20"
+                        : "bg-slate-900/90 border border-slate-800 text-slate-200 rounded-bl-none"
                     }`}
                   >
                     {msg.content || (
                       <span className="inline-flex items-center gap-1.5 text-slate-400">
-                        <Loader2 className="w-3 h-3 animate-spin text-cyan-400" />
-                        <span>{language === "tr" ? "Yanıt oluşturuluyor..." : "Thinking..."}</span>
+                        <Loader2 className="w-3 h-3 animate-spin text-emerald-400" />
+                        <span>{language === "de" ? "Antwort wird generiert..." : "Thinking..."}</span>
                       </span>
                     )}
                   </div>
 
                   {msg.role === "user" && (
-                    <div className="w-7 h-7 rounded-lg bg-cyan-950/60 border border-cyan-800/50 flex items-center justify-center text-cyan-300 shrink-0 mt-0.5">
+                    <div className="w-7 h-7 rounded-lg bg-emerald-950/80 border border-emerald-700/60 flex items-center justify-center text-emerald-300 shrink-0 mt-0.5">
                       <User className="w-4 h-4" />
                     </div>
                   )}
@@ -271,17 +271,17 @@ export default function ChatBot() {
 
             {/* Quick Starter Suggestions */}
             {messages.length <= 2 && (
-              <div className="px-4 py-2 border-t border-slate-800/60 bg-slate-950/40">
+              <div className="px-4 py-2 border-t border-slate-800 bg-slate-950">
                 <div className="text-[10px] uppercase font-bold text-slate-400 mb-1.5 flex items-center gap-1">
-                  <Sparkles className="w-3 h-3 text-cyan-400" />
-                  <span>{language === "tr" ? "Önerilen Sorular" : "Suggested Inquiries"}</span>
+                  <Sparkles className="w-3 h-3 text-emerald-400" />
+                  <span>{language === "de" ? "Empfohlene Fragen" : "Suggested Inquiries"}</span>
                 </div>
                 <div className="flex flex-wrap gap-1.5">
                   {starterQuestions.map((q, idx) => (
                     <button
                       key={idx}
                       onClick={() => handleSend(q)}
-                      className="px-2.5 py-1 rounded-lg bg-blue-950/70 hover:bg-blue-900/80 border border-blue-800/50 text-slate-300 text-[11px] text-left transition-colors"
+                      className="px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-emerald-950/60 border border-slate-800 hover:border-emerald-700/50 text-slate-300 hover:text-emerald-300 text-[11px] text-left transition-colors"
                     >
                       {q}
                     </button>
@@ -291,7 +291,7 @@ export default function ChatBot() {
             )}
 
             {/* Message Input Box */}
-            <div className="p-3.5 bg-[#060D1A] border-t border-blue-900/40">
+            <div className="p-3.5 bg-slate-950 border-t border-slate-800">
               <form
                 onSubmit={(e) => {
                   e.preventDefault();
@@ -304,17 +304,17 @@ export default function ChatBot() {
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   placeholder={
-                    language === "tr"
-                      ? "Apollo ürünleri ve mühendislik hakkında sorun..."
+                    language === "de"
+                      ? "Fragen zu Hardware, Software oder Spezifikationen..."
                       : "Ask about Apollo hardware, software, or specs..."
                   }
-                  className="w-full pl-4 pr-11 py-2.5 rounded-xl bg-slate-900/90 border border-slate-800 text-white text-xs placeholder-slate-500 focus:outline-none focus:border-cyan-400 transition-colors"
+                  className="w-full pl-4 pr-11 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-white text-xs placeholder-slate-500 focus:outline-none focus:border-emerald-500 transition-colors"
                 />
                 <button
                   type="submit"
                   disabled={!input.trim() || isLoading}
                   aria-label="Send message"
-                  className="absolute right-1.5 w-8 h-8 rounded-lg bg-blue-600 hover:bg-blue-500 disabled:opacity-40 disabled:hover:bg-blue-600 text-white flex items-center justify-center transition-colors cursor-pointer"
+                  className="absolute right-1.5 w-8 h-8 rounded-lg bg-emerald-600 hover:bg-emerald-500 disabled:opacity-40 disabled:hover:bg-emerald-600 text-white flex items-center justify-center transition-colors cursor-pointer"
                 >
                   <Send className="w-3.5 h-3.5" />
                 </button>

@@ -41,18 +41,18 @@ export default function ProductSpecsModal({ product, onClose }: ProductSpecsModa
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 20 }}
           transition={{ type: "spring", damping: 25, stiffness: 300 }}
-          className="relative w-full max-w-3xl bg-[#091325] border border-blue-800/60 rounded-3xl shadow-2xl overflow-hidden z-10 my-8 max-h-[90vh] flex flex-col"
+          className="relative w-full max-w-3xl bg-white border border-green-100 rounded-3xl shadow-2xl overflow-hidden z-10 my-8 max-h-[90vh] flex flex-col"
         >
           {/* Header */}
-          <div className="p-6 sm:p-8 bg-gradient-to-r from-blue-950/80 via-[#0C1A36] to-blue-950/80 border-b border-blue-900/40 flex items-start justify-between gap-4">
+          <div className="p-6 sm:p-8 bg-gradient-to-r from-green-50 via-white to-green-50 border-b border-green-100 flex items-start justify-between gap-4">
             <div>
-              <span className="inline-block px-3 py-1 rounded-full bg-blue-900/40 border border-blue-500/30 text-cyan-400 text-xs font-bold uppercase tracking-wider mb-2">
+              <span className="inline-block px-3 py-1 rounded-full bg-green-100 border border-green-200 text-green-700 text-xs font-bold uppercase tracking-wider mb-2">
                 {product.categoryLabel}
               </span>
-              <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
+              <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 tracking-tight">
                 {product.name}
               </h3>
-              <p className="text-slate-300 text-sm mt-1">
+              <p className="text-gray-500 text-sm mt-1">
                 {product.tagline}
               </p>
             </div>
@@ -60,7 +60,7 @@ export default function ProductSpecsModal({ product, onClose }: ProductSpecsModa
             <button
               onClick={onClose}
               aria-label="Close modal"
-              className="w-9 h-9 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-400 hover:text-white flex items-center justify-center transition-colors shrink-0"
+              className="w-9 h-9 rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-500 hover:text-gray-800 flex items-center justify-center transition-colors shrink-0"
             >
               <X className="w-5 h-5" />
             </button>
@@ -70,26 +70,26 @@ export default function ProductSpecsModal({ product, onClose }: ProductSpecsModa
           <div className="p-6 sm:p-8 overflow-y-auto space-y-6 text-sm">
             {/* Overview */}
             <div>
-              <h4 className="text-xs uppercase font-bold text-cyan-400 tracking-wider mb-2">
-                {language === "tr" ? "ÜRÜN GENEL BAKIŞI" : "SYSTEM ARCHITECTURE"}
+              <h4 className="text-xs uppercase font-bold text-green-600 tracking-wider mb-2">
+                {language === "de" ? "SYSTEMARCHITEKTUR" : "SYSTEM ARCHITECTURE"}
               </h4>
-              <p className="text-slate-300 leading-relaxed">
+              <p className="text-gray-600 leading-relaxed">
                 {product.fullOverview}
               </p>
             </div>
 
             {/* Key Highlights */}
             <div>
-              <h4 className="text-xs uppercase font-bold text-cyan-400 tracking-wider mb-3">
-                {language === "tr" ? "ÖNE ÇIKAN MÜHENDİSLİK AVANTAJLARI" : "ENGINEERING HIGHLIGHTS"}
+              <h4 className="text-xs uppercase font-bold text-green-600 tracking-wider mb-3">
+                {language === "de" ? "TECHNISCHE HIGHLIGHTS" : "ENGINEERING HIGHLIGHTS"}
               </h4>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {product.highlights.map((highlight, idx) => (
                   <div
                     key={idx}
-                    className="p-3 rounded-xl bg-blue-950/30 border border-blue-900/40 flex items-start gap-2.5 text-xs text-slate-200"
+                    className="p-3 rounded-xl bg-green-50 border border-green-100 flex items-start gap-2.5 text-xs text-gray-700"
                   >
-                    <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                    <ShieldCheck className="w-4 h-4 text-green-500 shrink-0 mt-0.5" />
                     <span>{highlight}</span>
                   </div>
                 ))}
@@ -98,21 +98,21 @@ export default function ProductSpecsModal({ product, onClose }: ProductSpecsModa
 
             {/* Technical Specifications Table */}
             <div>
-              <h4 className="text-xs uppercase font-bold text-cyan-400 tracking-wider mb-3">
-                {language === "tr" ? "TEKNİK ÖZELLİKLER TABLOSU" : "DETAILED SPECIFICATION TABLE"}
+              <h4 className="text-xs uppercase font-bold text-green-600 tracking-wider mb-3">
+                {language === "de" ? "SPEZIFIKATIONSTABELLE" : "DETAILED SPECIFICATION TABLE"}
               </h4>
-              <div className="rounded-2xl border border-slate-800 overflow-hidden">
+              <div className="rounded-2xl border border-gray-100 overflow-hidden">
                 <table className="w-full text-left text-xs">
-                  <tbody className="divide-y divide-slate-800">
+                  <tbody className="divide-y divide-gray-100">
                     {product.specs.map((spec, idx) => (
                       <tr
                         key={idx}
-                        className={idx % 2 === 0 ? "bg-slate-900/50" : "bg-slate-950/50"}
+                        className={idx % 2 === 0 ? "bg-gray-50" : "bg-white"}
                       >
-                        <td className="py-3 px-4 font-semibold text-slate-300 w-1/3">
+                        <td className="py-3 px-4 font-semibold text-gray-600 w-1/3">
                           {spec.name}
                         </td>
-                        <td className="py-3 px-4 text-cyan-200 font-mono">
+                        <td className="py-3 px-4 text-green-700 font-mono">
                           {spec.value}
                         </td>
                       </tr>
@@ -125,15 +125,15 @@ export default function ProductSpecsModal({ product, onClose }: ProductSpecsModa
             {/* Protocols & Certifications */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {product.protocols && (
-                <div className="p-4 rounded-xl bg-slate-950/70 border border-slate-800">
-                  <div className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">
-                    {language === "tr" ? "Protokol Desteği" : "Supported Protocols"}
+                <div className="p-4 rounded-xl bg-gray-50 border border-gray-100">
+                  <div className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">
+                    {language === "de" ? "Protokollunterstützung" : "Supported Protocols"}
                   </div>
                   <div className="flex flex-wrap gap-1.5">
                     {product.protocols.map((p, i) => (
                       <span
                         key={i}
-                        className="px-2 py-0.5 rounded bg-blue-900/40 text-[11px] font-mono text-cyan-300 border border-blue-800/40"
+                        className="px-2 py-0.5 rounded bg-green-100 text-[11px] font-mono text-green-700 border border-green-200"
                       >
                         {p}
                       </span>
@@ -143,15 +143,15 @@ export default function ProductSpecsModal({ product, onClose }: ProductSpecsModa
               )}
 
               {product.certifications && (
-                <div className="p-4 rounded-xl bg-slate-950/70 border border-slate-800">
-                  <div className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">
-                    {language === "tr" ? "Sertifikasyonlar" : "Industrial Certifications"}
+                <div className="p-4 rounded-xl bg-gray-50 border border-gray-100">
+                  <div className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">
+                    {language === "de" ? "Industriezertifizierungen" : "Industrial Certifications"}
                   </div>
                   <div className="flex flex-wrap gap-1.5">
                     {product.certifications.map((c, i) => (
                       <span
                         key={i}
-                        className="px-2 py-0.5 rounded bg-emerald-950/40 text-[11px] font-mono text-emerald-300 border border-emerald-800/40"
+                        className="px-2 py-0.5 rounded bg-emerald-50 text-[11px] font-mono text-emerald-700 border border-emerald-200"
                       >
                         {c}
                       </span>
@@ -163,23 +163,23 @@ export default function ProductSpecsModal({ product, onClose }: ProductSpecsModa
           </div>
 
           {/* Footer Controls */}
-          <div className="p-6 bg-[#070F1E] border-t border-blue-900/40 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="p-6 bg-gray-50 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between gap-4">
             <button
               onClick={handleDownloadDatasheet}
-              className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold flex items-center justify-center gap-2 transition-colors border border-slate-700"
+              className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-white hover:bg-gray-100 text-gray-700 text-xs font-bold flex items-center justify-center gap-2 transition-colors border border-gray-200"
             >
               {downloaded ? (
                 <>
-                  <Check className="w-4 h-4 text-emerald-400" />
-                  <span className="text-emerald-300">
-                    {language === "tr" ? "PDF İndirildi (Simülasyon)" : "Datasheet Downloaded"}
+                  <Check className="w-4 h-4 text-green-500" />
+                  <span className="text-green-600">
+                    {language === "de" ? "PDF heruntergeladen" : "Datasheet Downloaded"}
                   </span>
                 </>
               ) : (
                 <>
-                  <Download className="w-4 h-4 text-cyan-400" />
+                  <Download className="w-4 h-4 text-green-600" />
                   <span>
-                    {language === "tr" ? "Teknik Broşürü İndir (PDF)" : "Download PDF Datasheet"}
+                    {language === "de" ? "PDF Datenblatt herunterladen" : "Download PDF Datasheet"}
                   </span>
                 </>
               )}
@@ -188,9 +188,9 @@ export default function ProductSpecsModal({ product, onClose }: ProductSpecsModa
             <Link
               href="/contact"
               onClick={onClose}
-              className="w-full sm:w-auto px-6 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white text-xs font-bold flex items-center justify-center gap-2 shadow-lg shadow-blue-600/20 transition-all"
+              className="w-full sm:w-auto px-6 py-2.5 rounded-xl bg-green-600 hover:bg-green-700 text-white text-xs font-bold flex items-center justify-center gap-2 shadow-md shadow-green-500/20 transition-all"
             >
-              <span>{language === "tr" ? "Fiyat & Numune Talep Et" : "Request Quote & Sample"}</span>
+              <span>{language === "de" ? "Angebot & Muster anfordern" : "Request Quote & Sample"}</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>

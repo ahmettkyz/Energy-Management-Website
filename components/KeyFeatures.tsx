@@ -15,9 +15,7 @@ export default function KeyFeatures() {
       title: t.features.f1Title,
       desc: t.features.f1Desc,
       tag: "CLASS 0.2S",
-      color: "text-cyan-400",
-      bg: "bg-cyan-500/10",
-      border: "border-cyan-500/30",
+      accent: "green",
       link: "/products#apollo-pulse-analyzer",
     },
     {
@@ -25,9 +23,7 @@ export default function KeyFeatures() {
       title: t.features.f2Title,
       desc: t.features.f2Desc,
       tag: "AI SENTRY",
-      color: "text-blue-400",
-      bg: "bg-blue-500/10",
-      border: "border-blue-500/30",
+      accent: "emerald",
       link: "/products#apollo-predictive-sentry",
     },
     {
@@ -35,9 +31,7 @@ export default function KeyFeatures() {
       title: t.features.f3Title,
       desc: t.features.f3Desc,
       tag: "PEAK SHAVING",
-      color: "text-emerald-400",
-      bg: "bg-emerald-500/10",
-      border: "border-emerald-500/30",
+      accent: "teal",
       link: "/products#apollo-optistorage",
     },
     {
@@ -45,24 +39,52 @@ export default function KeyFeatures() {
       title: t.features.f4Title,
       desc: t.features.f4Desc,
       tag: "EU CSRD",
-      color: "text-purple-400",
-      bg: "bg-purple-500/10",
-      border: "border-purple-500/30",
+      accent: "green",
       link: "/products#apollo-carbon-sentinel",
     },
   ];
 
+  const accentMap: Record<string, { iconBg: string; iconText: string; border: string; tagBg: string; tagText: string; linkText: string }> = {
+    green: {
+      iconBg: "bg-green-100",
+      iconText: "text-green-600",
+      border: "border-green-100 hover:border-green-200",
+      tagBg: "bg-green-50",
+      tagText: "text-green-700",
+      linkText: "text-green-600 hover:text-green-700",
+    },
+    emerald: {
+      iconBg: "bg-emerald-100",
+      iconText: "text-emerald-600",
+      border: "border-emerald-100 hover:border-emerald-200",
+      tagBg: "bg-emerald-50",
+      tagText: "text-emerald-700",
+      linkText: "text-emerald-600 hover:text-emerald-700",
+    },
+    teal: {
+      iconBg: "bg-teal-100",
+      iconText: "text-teal-600",
+      border: "border-teal-100 hover:border-teal-200",
+      tagBg: "bg-teal-50",
+      tagText: "text-teal-700",
+      linkText: "text-teal-600 hover:text-teal-700",
+    },
+  };
+
   return (
-    <section className="py-24 bg-[#050C18] relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-24 bg-gray-50 relative overflow-hidden">
+      {/* Soft background decoration */}
+      <div className="absolute inset-0 bg-grid-pattern opacity-50 pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-block px-3 py-1 rounded-full bg-blue-950/60 border border-blue-500/30 text-cyan-400 text-xs font-bold uppercase tracking-widest mb-4">
+          <div className="inline-block px-3 py-1 rounded-full bg-green-100 border border-green-200 text-green-700 text-xs font-bold uppercase tracking-widest mb-4">
             {t.features.tag}
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight">
             {t.features.title}
           </h2>
-          <p className="mt-4 text-base sm:text-lg text-slate-300">
+          <p className="mt-4 text-base sm:text-lg text-gray-500">
             {t.features.subtitle}
           </p>
         </div>
@@ -70,6 +92,7 @@ export default function KeyFeatures() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {featureItems.map((item, idx) => {
             const Icon = item.icon;
+            const ac = accentMap[item.accent] ?? accentMap.green;
             return (
               <motion.div
                 key={idx}
@@ -77,34 +100,32 @@ export default function KeyFeatures() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
-                className="p-8 rounded-2xl bg-gradient-to-br from-[#09152B] to-[#060F1E] border border-blue-900/40 hover:border-blue-500/50 shadow-xl transition-all duration-300 group hover:-translate-y-1 flex flex-col justify-between"
+                className={`p-8 rounded-3xl bg-white border ${ac.border} hover:shadow-xl shadow-md transition-all duration-500 group hover:-translate-y-1 flex flex-col justify-between`}
               >
                 <div>
                   <div className="flex items-center justify-between mb-6">
-                    <div
-                      className={`w-12 h-12 rounded-xl ${item.bg} border ${item.border} flex items-center justify-center ${item.color} group-hover:scale-110 transition-transform`}
-                    >
+                    <div className={`w-12 h-12 rounded-2xl ${ac.iconBg} flex items-center justify-center ${ac.iconText} group-hover:scale-110 transition-transform`}>
                       <Icon className="w-6 h-6" />
                     </div>
-                    <span className="text-[11px] font-bold tracking-wider px-2.5 py-1 rounded bg-slate-900 border border-slate-700 text-slate-300 uppercase">
+                    <span className={`text-[11px] font-bold tracking-wider px-2.5 py-1 rounded-lg ${ac.tagBg} ${ac.tagText} uppercase border border-current/10`}>
                       {item.tag}
                     </span>
                   </div>
 
-                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-cyan-300 transition-colors">
+                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-green-700 transition-colors">
                     {item.title}
                   </h3>
 
-                  <p className="text-slate-300 text-sm leading-relaxed mb-6">
+                  <p className="text-gray-500 text-sm leading-relaxed mb-6">
                     {item.desc}
                   </p>
                 </div>
 
                 <Link
                   href={item.link}
-                  className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-cyan-400 hover:text-cyan-300 transition-colors pt-4 border-t border-slate-800"
+                  className={`inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider ${ac.linkText} transition-colors pt-4 border-t border-gray-100`}
                 >
-                  <span>{language === "tr" ? "Detaylı Özellikleri İncele" : "Explore Technical Specs"}</span>
+                  <span>{language === "de" ? "Technische Details" : "Explore Technical Specs"}</span>
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </motion.div>

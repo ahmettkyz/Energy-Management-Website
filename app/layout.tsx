@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/context/LanguageContext";
 import TopBar from "@/components/TopBar";
@@ -6,8 +7,14 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ChatBot from "@/components/ChatBot";
 
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
+});
+
 export const viewport: Viewport = {
-  themeColor: "#040914",
+  themeColor: "#16a34a",
   width: "device-width",
   initialScale: 1,
 };
@@ -24,7 +31,7 @@ export const metadata: Metadata = {
     "Apollo Green Solutions",
     "energy management",
     "smart grid",
-    "akıllı enerji yönetimi",
+    "Energiemanagement",
     "industrial IoT",
     "sub-metering",
     "Class 0.2S",
@@ -72,8 +79,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark scroll-smooth">
-      <body className="min-h-screen flex flex-col bg-[#040914] text-slate-100 antialiased selection:bg-blue-600 selection:text-white">
+    <html lang="en" className={`scroll-smooth ${inter.variable}`}>
+      <body className={`${inter.className} min-h-screen flex flex-col bg-[#f8faf9] text-gray-900 antialiased selection:bg-green-600 selection:text-white`}>
         <LanguageProvider>
           <TopBar />
           <Navbar />

@@ -40,27 +40,27 @@ export default function ContactForm() {
 
     if (!formData.fullName.trim()) {
       newErrors.fullName =
-        language === "tr" ? "Lütfen adınızı ve soyadınızı giriniz." : "Please enter your full name.";
+        language === "de" ? "Bitte geben Sie Ihren vollständigen Namen ein." : "Please enter your full name.";
     }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!formData.email.trim()) {
       newErrors.email =
-        language === "tr" ? "Lütfen kurumsal e-posta adresinizi giriniz." : "Please enter your work email.";
+        language === "de" ? "Bitte geben Sie Ihre geschäftliche E-Mail ein." : "Please enter your work email.";
     } else if (!emailRegex.test(formData.email)) {
       newErrors.email =
-        language === "tr" ? "Geçerli bir e-posta adresi yazınız." : "Please enter a valid email address.";
+        language === "de" ? "Bitte geben Sie eine gültige E-Mail-Adresse ein." : "Please enter a valid email address.";
     }
 
     if (!formData.company.trim()) {
       newErrors.company =
-        language === "tr" ? "Lütfen şirket veya kurum adını belirtiniz." : "Please specify your company.";
+        language === "de" ? "Bitte geben Sie Ihren Firmennamen an." : "Please specify your company.";
     }
 
     if (!formData.message.trim() || formData.message.trim().length < 10) {
       newErrors.message =
-        language === "tr"
-          ? "Mesajınız en az 10 karakter uzunluğunda olmalıdır."
+        language === "de"
+          ? "Nachricht muss mindestens 10 Zeichen lang sein."
           : "Message must be at least 10 characters.";
     }
 
@@ -86,7 +86,7 @@ export default function ContactForm() {
         particleCount: 80,
         spread: 70,
         origin: { y: 0.6 },
-        colors: ["#38BDF8", "#2563EB", "#00F0FF", "#10B981"],
+        colors: ["#16a34a", "#22c55e", "#4ade80", "#10B981"],
       });
     } catch {
       // safe fallback
@@ -106,9 +106,9 @@ export default function ContactForm() {
   };
 
   return (
-    <div className="w-full max-w-2xl mx-auto p-8 sm:p-10 rounded-3xl bg-gradient-to-b from-[#09152B] to-[#060F1E] border border-blue-900/50 shadow-2xl relative overflow-hidden">
+    <div className="w-full max-w-2xl mx-auto p-8 sm:p-10 rounded-3xl bg-white border border-green-100 shadow-xl relative overflow-hidden">
       {/* Background radial accent */}
-      <div className="absolute top-0 right-0 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-0 right-0 w-80 h-80 bg-green-500/5 rounded-full blur-3xl pointer-events-none" />
 
       <AnimatePresence mode="wait">
         {isSubmitted ? (
@@ -119,25 +119,25 @@ export default function ContactForm() {
             exit={{ opacity: 0, scale: 0.95 }}
             className="text-center py-12"
           >
-            <div className="w-16 h-16 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 mx-auto flex items-center justify-center mb-6 shadow-lg shadow-emerald-500/10">
+            <div className="w-16 h-16 rounded-2xl bg-green-100 border border-green-200 text-green-600 mx-auto flex items-center justify-center mb-6 shadow-lg shadow-green-500/10">
               <CheckCircle2 className="w-8 h-8" />
             </div>
 
-            <h3 className="text-2xl font-bold text-white mb-2">
-              {language === "tr" ? "Mesajınız Alındı!" : "Inquiry Received!"}
+            <h3 className="text-2xl font-bold text-gray-900 mb-2">
+              {language === "de" ? "Anfrage erhalten!" : "Inquiry Received!"}
             </h3>
 
-            <p className="text-slate-300 text-sm max-w-md mx-auto mb-8 leading-relaxed">
-              {language === "tr"
-                ? `Teşekkürler Sayın ${formData.fullName}. Apollo mühendislik ekibimiz 24 saat içinde sizinle iletişime geçerek tesisinize özel teknik fizibilite detaylarını iletecektir.`
+            <p className="text-gray-500 text-sm max-w-md mx-auto mb-8 leading-relaxed">
+              {language === "de"
+                ? `Vielen Dank, ${formData.fullName}. Unser Ingenieurteam in Deutschland und Griechenland prüft Ihre Anforderungen und meldet sich innerhalb von 24 Stunden.`
                 : `Thank you, ${formData.fullName}. Our engineering team in Germany and Greece will review your technical requirements and contact you within 24 hours.`}
             </p>
 
             <button
               onClick={resetForm}
-              className="px-6 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold transition-all border border-slate-700"
+              className="px-6 py-2.5 rounded-xl bg-green-100 hover:bg-green-200 text-green-700 text-xs font-bold transition-all border border-green-200"
             >
-              {language === "tr" ? "Yeni Bir Mesaj Gönder" : "Send Another Inquiry"}
+              {language === "de" ? "Neue Anfrage senden" : "Send Another Inquiry"}
             </button>
           </motion.div>
         ) : (
@@ -153,8 +153,8 @@ export default function ContactForm() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {/* Full Name */}
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">
-                  {language === "tr" ? "Ad Soyad *" : "Full Name *"}
+                <label className="block text-xs font-bold uppercase tracking-wider text-gray-600 mb-2">
+                  {language === "de" ? "Name *" : "Full Name *"}
                 </label>
                 <input
                   type="text"
@@ -163,15 +163,15 @@ export default function ContactForm() {
                     setFormData({ ...formData, fullName: e.target.value });
                     if (errors.fullName) setErrors({ ...errors, fullName: undefined });
                   }}
-                  placeholder={language === "tr" ? "Örn. Ahmet Yılmaz" : "e.g. Dr. Markus Weber"}
-                  className={`w-full px-4 py-3 rounded-xl bg-slate-950/70 border text-white text-sm placeholder-slate-500 focus:outline-none transition-colors ${
+                  placeholder={language === "de" ? "z.B. Dr. Markus Weber" : "e.g. Dr. Markus Weber"}
+                  className={`w-full px-4 py-3 rounded-xl bg-gray-50 border text-gray-900 text-sm placeholder-gray-400 focus:outline-none transition-colors ${
                     errors.fullName
-                      ? "border-red-500/80 focus:border-red-400"
-                      : "border-slate-800 focus:border-cyan-400"
+                      ? "border-red-400 focus:border-red-500"
+                      : "border-gray-200 focus:border-green-500"
                   }`}
                 />
                 {errors.fullName && (
-                  <p className="mt-1.5 text-xs text-red-400 flex items-center gap-1">
+                  <p className="mt-1.5 text-xs text-red-500 flex items-center gap-1">
                     <AlertCircle className="w-3 h-3" />
                     <span>{errors.fullName}</span>
                   </p>
@@ -180,8 +180,8 @@ export default function ContactForm() {
 
               {/* Work Email */}
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">
-                  {language === "tr" ? "Kurumsal E-Posta *" : "Work Email *"}
+                <label className="block text-xs font-bold uppercase tracking-wider text-gray-600 mb-2">
+                  {language === "de" ? "Geschäftliche E-Mail *" : "Work Email *"}
                 </label>
                 <input
                   type="email"
@@ -190,15 +190,15 @@ export default function ContactForm() {
                     setFormData({ ...formData, email: e.target.value });
                     if (errors.email) setErrors({ ...errors, email: undefined });
                   }}
-                  placeholder={language === "tr" ? "ad.soyad@sirket.com" : "name@enterprise.com"}
-                  className={`w-full px-4 py-3 rounded-xl bg-slate-950/70 border text-white text-sm placeholder-slate-500 focus:outline-none transition-colors ${
+                  placeholder={language === "de" ? "name@unternehmen.com" : "name@enterprise.com"}
+                  className={`w-full px-4 py-3 rounded-xl bg-gray-50 border text-gray-900 text-sm placeholder-gray-400 focus:outline-none transition-colors ${
                     errors.email
-                      ? "border-red-500/80 focus:border-red-400"
-                      : "border-slate-800 focus:border-cyan-400"
+                      ? "border-red-400 focus:border-red-500"
+                      : "border-gray-200 focus:border-green-500"
                   }`}
                 />
                 {errors.email && (
-                  <p className="mt-1.5 text-xs text-red-400 flex items-center gap-1">
+                  <p className="mt-1.5 text-xs text-red-500 flex items-center gap-1">
                     <AlertCircle className="w-3 h-3" />
                     <span>{errors.email}</span>
                   </p>
@@ -209,8 +209,8 @@ export default function ContactForm() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {/* Company */}
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">
-                  {language === "tr" ? "Şirket / Tesis Adı *" : "Company / Facility *"}
+                <label className="block text-xs font-bold uppercase tracking-wider text-gray-600 mb-2">
+                  {language === "de" ? "Unternehmen / Einrichtung *" : "Company / Facility *"}
                 </label>
                 <input
                   type="text"
@@ -219,15 +219,15 @@ export default function ContactForm() {
                     setFormData({ ...formData, company: e.target.value });
                     if (errors.company) setErrors({ ...errors, company: undefined });
                   }}
-                  placeholder={language === "tr" ? "Şirketinizin Adı" : "Your Organization"}
-                  className={`w-full px-4 py-3 rounded-xl bg-slate-950/70 border text-white text-sm placeholder-slate-500 focus:outline-none transition-colors ${
+                  placeholder={language === "de" ? "Ihr Unternehmen" : "Your Organization"}
+                  className={`w-full px-4 py-3 rounded-xl bg-gray-50 border text-gray-900 text-sm placeholder-gray-400 focus:outline-none transition-colors ${
                     errors.company
-                      ? "border-red-500/80 focus:border-red-400"
-                      : "border-slate-800 focus:border-cyan-400"
+                      ? "border-red-400 focus:border-red-500"
+                      : "border-gray-200 focus:border-green-500"
                   }`}
                 />
                 {errors.company && (
-                  <p className="mt-1.5 text-xs text-red-400 flex items-center gap-1">
+                  <p className="mt-1.5 text-xs text-red-500 flex items-center gap-1">
                     <AlertCircle className="w-3 h-3" />
                     <span>{errors.company}</span>
                   </p>
@@ -236,13 +236,13 @@ export default function ContactForm() {
 
               {/* Solution of Interest */}
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">
-                  {language === "tr" ? "İlgilendiğiniz Çözüm" : "Solution of Interest"}
+                <label className="block text-xs font-bold uppercase tracking-wider text-gray-600 mb-2">
+                  {language === "de" ? "Gewünschte Lösung" : "Solution of Interest"}
                 </label>
                 <select
                   value={formData.solution}
                   onChange={(e) => setFormData({ ...formData, solution: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl bg-slate-950/70 border border-slate-800 text-white text-sm focus:outline-none focus:border-cyan-400 transition-colors"
+                  className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 text-gray-900 text-sm focus:outline-none focus:border-green-500 transition-colors"
                 >
                   <option value="Apollo Gateway Pro & Hardware">Apollo Gateway Pro (Hardware)</option>
                   <option value="Apollo Pulse Analyzer">Apollo Pulse Analyzer (Class 0.2S)</option>
@@ -256,8 +256,8 @@ export default function ContactForm() {
 
             {/* Message */}
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">
-                {language === "tr" ? "Mesajınız / Teknik İhtiyaçlarınız *" : "Project Details & Message *"}
+              <label className="block text-xs font-bold uppercase tracking-wider text-gray-600 mb-2">
+                {language === "de" ? "Projektdetails & Nachricht *" : "Project Details & Message *"}
               </label>
               <textarea
                 rows={4}
@@ -267,18 +267,18 @@ export default function ContactForm() {
                   if (errors.message) setErrors({ ...errors, message: undefined });
                 }}
                 placeholder={
-                  language === "tr"
-                    ? "Tesisinizin enerji tüketim kapasitesi, mevcut ölçüm altyapısı ve hedefleriniz hakkında kısa bilgi veriniz..."
+                  language === "de"
+                    ? "Beschreiben Sie Ihre Anlagengröße, Spitzenlasten, Messanforderungen oder ESG-Ziele..."
                     : "Describe your facility size, peak loads, metering requirements, or ESG targets..."
                 }
-                className={`w-full px-4 py-3 rounded-xl bg-slate-950/70 border text-white text-sm placeholder-slate-500 focus:outline-none transition-colors resize-none ${
+                className={`w-full px-4 py-3 rounded-xl bg-gray-50 border text-gray-900 text-sm placeholder-gray-400 focus:outline-none transition-colors resize-none ${
                   errors.message
-                    ? "border-red-500/80 focus:border-red-400"
-                    : "border-slate-800 focus:border-cyan-400"
+                    ? "border-red-400 focus:border-red-500"
+                    : "border-gray-200 focus:border-green-500"
                 }`}
               />
               {errors.message && (
-                <p className="mt-1.5 text-xs text-red-400 flex items-center gap-1">
+                <p className="mt-1.5 text-xs text-red-500 flex items-center gap-1">
                   <AlertCircle className="w-3 h-3" />
                   <span>{errors.message}</span>
                 </p>
@@ -289,16 +289,16 @@ export default function ContactForm() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full py-4 rounded-xl bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white font-bold text-sm tracking-wide shadow-lg shadow-blue-500/25 hover:shadow-cyan-400/30 transition-all duration-200 flex items-center justify-center gap-2 active:scale-98 disabled:opacity-70 cursor-pointer"
+              className="w-full py-4 rounded-xl bg-green-600 hover:bg-green-700 text-white font-bold text-sm tracking-wide shadow-lg shadow-green-500/20 transition-all duration-200 flex items-center justify-center gap-2 active:scale-98 disabled:opacity-70 cursor-pointer"
             >
               {isSubmitting ? (
                 <>
                   <Loader2 className="w-5 h-5 animate-spin" />
-                  <span>{language === "tr" ? "İletiliyor..." : "Submitting..."}</span>
+                  <span>{language === "de" ? "Wird gesendet..." : "Submitting..."}</span>
                 </>
               ) : (
                 <>
-                  <span>{language === "tr" ? "Talebi Gönder" : "Send Inquiry"}</span>
+                  <span>{language === "de" ? "Anfrage senden" : "Send Inquiry"}</span>
                   <Send className="w-4 h-4" />
                 </>
               )}

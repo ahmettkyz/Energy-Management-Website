@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ChevronRight, Zap, Globe, ArrowUpRight } from "lucide-react";
+import { Menu, X, ChevronRight, Leaf, Globe, ArrowUpRight } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 
 export default function Navbar() {
@@ -21,21 +21,21 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="sticky top-0 z-40 w-full bg-[#060D1A]/85 backdrop-blur-md border-b border-blue-900/30 transition-all">
+      <header className="sticky top-0 z-40 w-full bg-white/90 backdrop-blur-md border-b border-green-100 shadow-sm transition-all">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
           {/* Brand Logo */}
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="relative w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-700 via-blue-600 to-cyan-400 p-[1.5px] shadow-lg shadow-blue-500/20 group-hover:shadow-cyan-500/40 transition-all duration-300">
-              <div className="w-full h-full bg-[#08101E] rounded-[10px] flex items-center justify-center">
-                <Zap className="w-5 h-5 text-cyan-400 group-hover:scale-110 transition-transform duration-300" />
+            <div className="relative w-10 h-10 rounded-xl bg-gradient-to-tr from-green-700 via-green-500 to-emerald-400 p-[1.5px] shadow-lg shadow-green-500/20 group-hover:shadow-green-500/40 transition-all duration-300">
+              <div className="w-full h-full bg-white rounded-[10px] flex items-center justify-center">
+                <Leaf className="w-5 h-5 text-green-600 group-hover:scale-110 transition-transform duration-300" />
               </div>
             </div>
             <div className="flex flex-col">
-              <span className="text-2xl font-bold tracking-tight text-white flex items-center gap-1">
+              <span className="text-2xl font-bold tracking-tight text-gray-900 flex items-center gap-1">
                 apollo
-                <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+                <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
               </span>
-              <span className="text-[10px] uppercase tracking-widest text-slate-400 font-semibold -mt-1">
+              <span className="text-[10px] uppercase tracking-widest text-gray-400 font-semibold -mt-1">
                 Green Solutions
               </span>
             </div>
@@ -51,15 +51,15 @@ export default function Navbar() {
                   href={link.href}
                   className={`text-sm font-medium tracking-wide transition-all duration-200 relative py-1 ${
                     isActive
-                      ? "text-white font-semibold"
-                      : "text-slate-300 hover:text-white"
+                      ? "text-green-700 font-semibold"
+                      : "text-gray-600 hover:text-green-700"
                   }`}
                 >
                   {link.name}
                   {isActive && (
                     <motion.div
                       layoutId="nav-underline"
-                      className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full"
+                      className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-green-600 to-emerald-400 rounded-full"
                     />
                   )}
                 </Link>
@@ -69,33 +69,33 @@ export default function Navbar() {
 
           {/* Right Controls: Language Selector & Menu Drawer Button */}
           <div className="flex items-center gap-4">
-            {/* Language Switcher Button (matches the 'TR' badge in screenshot) */}
+            {/* Language Switcher */}
             <button
               onClick={toggleLanguage}
               aria-label="Toggle language"
-              className="px-3 py-1.5 rounded-lg border border-blue-500/40 bg-blue-950/40 hover:bg-blue-900/60 text-slate-200 text-xs font-bold tracking-wider uppercase transition-all duration-200 hover:border-cyan-400/60 hover:text-cyan-300 flex items-center gap-1.5 shadow-sm"
+              className="px-3 py-1.5 rounded-lg border border-green-200 bg-green-50 hover:bg-green-100 text-green-700 text-xs font-bold tracking-wider uppercase transition-all duration-200 hover:border-green-400 flex items-center gap-1.5 shadow-sm"
             >
-              <Globe className="w-3.5 h-3.5 text-cyan-400" />
+              <Globe className="w-3.5 h-3.5 text-green-600" />
               <span>{language.toUpperCase()}</span>
             </button>
 
             {/* CTA Button Desktop */}
             <Link
               href="/contact"
-              className="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-blue-600 to-cyan-600 text-white text-xs font-bold tracking-wide hover:from-blue-500 hover:to-cyan-500 transition-all duration-200 shadow-md shadow-blue-500/20 hover:shadow-cyan-500/30 active:scale-95"
+              className="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-green-600 hover:bg-green-700 text-white text-xs font-bold tracking-wide transition-all duration-200 shadow-md shadow-green-500/20 hover:shadow-green-500/30 active:scale-95"
             >
               <span>{t.nav.bookMeeting}</span>
               <ArrowUpRight className="w-3.5 h-3.5" />
             </Link>
 
-            {/* Menu Drawer Toggle Button (two horizontal lines matching the reference screenshot) */}
+            {/* Menu Drawer Toggle Button */}
             <button
               onClick={() => setDrawerOpen(true)}
               aria-label="Open navigation drawer"
-              className="w-10 h-10 rounded-lg border border-slate-700/60 bg-slate-900/40 hover:bg-slate-800/60 flex flex-col items-center justify-center gap-1.5 text-slate-300 hover:text-white transition-all duration-200 group"
+              className="lg:hidden w-10 h-10 rounded-lg border border-gray-200 bg-gray-50 hover:bg-green-50 flex flex-col items-center justify-center gap-1.5 text-gray-500 hover:text-green-700 transition-all duration-200 group"
             >
-              <span className="w-5 h-[2px] bg-slate-300 group-hover:bg-cyan-400 transition-colors"></span>
-              <span className="w-5 h-[2px] bg-slate-300 group-hover:bg-cyan-400 transition-colors"></span>
+              <span className="w-5 h-[2px] bg-gray-400 group-hover:bg-green-600 transition-colors"></span>
+              <span className="w-5 h-[2px] bg-gray-400 group-hover:bg-green-600 transition-colors"></span>
             </button>
           </div>
         </div>
@@ -111,7 +111,7 @@ export default function Navbar() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setDrawerOpen(false)}
-              className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50"
+              className="fixed inset-0 bg-black/30 backdrop-blur-sm z-50"
             />
 
             {/* Drawer Panel */}
@@ -120,19 +120,20 @@ export default function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed top-0 right-0 bottom-0 w-full sm:w-96 bg-[#070E1B] border-l border-blue-900/40 shadow-2xl z-50 flex flex-col justify-between p-6 sm:p-8"
+              className="fixed top-0 right-0 bottom-0 w-full sm:w-96 bg-white border-l border-green-100 shadow-2xl z-50 flex flex-col justify-between p-6 sm:p-8"
             >
               <div>
                 {/* Header with Close button */}
-                <div className="flex items-center justify-between pb-6 border-b border-slate-800">
+                <div className="flex items-center justify-between pb-6 border-b border-gray-100">
                   <div className="flex items-center gap-2">
-                    <Zap className="w-5 h-5 text-cyan-400" />
-                    <span className="font-bold text-white tracking-wide">apollo</span>
+                    <Leaf className="w-5 h-5 text-green-600" />
+                    <span className="font-bold text-gray-900 tracking-wide">apollo</span>
+                    <span className="text-[10px] uppercase tracking-widest text-gray-400 font-semibold">Green Solutions</span>
                   </div>
                   <button
                     onClick={() => setDrawerOpen(false)}
                     aria-label="Close menu"
-                    className="w-9 h-9 rounded-lg bg-slate-800/80 hover:bg-slate-700 flex items-center justify-center text-slate-300 hover:text-white transition-colors"
+                    className="w-9 h-9 rounded-lg bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-gray-500 hover:text-gray-800 transition-colors"
                   >
                     <X className="w-5 h-5" />
                   </button>
@@ -149,47 +150,45 @@ export default function Navbar() {
                         onClick={() => setDrawerOpen(false)}
                         className={`px-4 py-3.5 rounded-xl font-medium text-base flex items-center justify-between transition-all ${
                           isActive
-                            ? "bg-blue-600/20 text-cyan-400 border border-blue-500/30"
-                            : "text-slate-300 hover:bg-slate-800/60 hover:text-white"
+                            ? "bg-green-50 text-green-700 border border-green-200"
+                            : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
                         }`}
                       >
                         <span>{link.name}</span>
-                        <ChevronRight className="w-4 h-4 opacity-70" />
+                        <ChevronRight className="w-4 h-4 opacity-50" />
                       </Link>
                     );
                   })}
                 </nav>
 
                 {/* Quick Info Box */}
-                <div className="mt-10 p-5 rounded-xl bg-blue-950/40 border border-blue-900/40">
-                  <div className="text-xs uppercase tracking-wider text-cyan-400 font-bold mb-2">
-                    {language === "tr" ? "Mühendislik Merkezleri" : "Engineering Centers"}
+                <div className="mt-10 p-5 rounded-2xl bg-green-50 border border-green-100">
+                  <div className="text-xs uppercase tracking-wider text-green-700 font-bold mb-2">
+                    Engineering Centers
                   </div>
-                  <p className="text-xs text-slate-300 leading-relaxed">
-                    {language === "tr"
-                      ? "Stuttgart (Almanya) ve Atina (Yunanistan) tesislerimizde B2B endüstriyel enerji çözümleri geliştiriyoruz."
+                  <p className="text-xs text-gray-600 leading-relaxed">
+                    {language === "de"
+                      ? "Entwicklung von B2B-Industrie-Energielösungen in Stuttgart (Deutschland) und Athen (Griechenland)."
                       : "Developing enterprise energy hardware & cloud software across Stuttgart, Germany and Athens, Greece."}
                   </p>
                 </div>
               </div>
 
               {/* Drawer Footer */}
-              <div className="pt-6 border-t border-slate-800">
+              <div className="pt-6 border-t border-gray-100">
                 <div className="flex items-center justify-between mb-4">
-                  <span className="text-xs text-slate-400">
-                    {language === "tr" ? "Dil Seçimi" : "Language"}
-                  </span>
+                  <span className="text-xs text-gray-400">Language</span>
                   <button
                     onClick={toggleLanguage}
-                    className="px-3 py-1 rounded bg-blue-900/40 border border-blue-500/30 text-cyan-400 text-xs font-bold"
+                    className="px-3 py-1 rounded-lg bg-green-100 border border-green-200 text-green-700 text-xs font-bold hover:bg-green-200 transition-colors"
                   >
-                    {language === "tr" ? "TR (Türkçe)" : "EN (English)"}
+                    {language === "de" ? "DE (Deutsch)" : "EN (English)"}
                   </button>
                 </div>
                 <Link
                   href="/contact"
                   onClick={() => setDrawerOpen(false)}
-                  className="w-full py-3 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-semibold text-sm flex items-center justify-center gap-2 shadow-lg shadow-blue-600/20 hover:from-blue-500 hover:to-cyan-500 transition-all"
+                  className="w-full py-3 rounded-xl bg-green-600 hover:bg-green-700 text-white font-semibold text-sm flex items-center justify-center gap-2 shadow-lg shadow-green-600/20 transition-all"
                 >
                   <span>{t.nav.bookMeeting}</span>
                   <ArrowUpRight className="w-4 h-4" />

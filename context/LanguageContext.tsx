@@ -7,17 +7,17 @@ interface LanguageContextType {
   language: Language;
   setLanguage: (lang: Language) => void;
   toggleLanguage: () => void;
-  t: typeof translations.tr;
+  t: typeof translations.en;
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [language, setLanguage] = useState<Language>("tr");
+  const [language, setLanguage] = useState<Language>("en");
 
   useEffect(() => {
     const saved = localStorage.getItem("apollo_lang") as Language;
-    if (saved === "tr" || saved === "en") {
+    if (saved === "en" || saved === "de") {
       setLanguage(saved);
     }
   }, []);
@@ -28,7 +28,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   };
 
   const toggleLanguage = () => {
-    const nextLang: Language = language === "tr" ? "en" : "tr";
+    const nextLang: Language = language === "en" ? "de" : "en";
     handleSetLanguage(nextLang);
   };
 
