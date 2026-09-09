@@ -79,7 +79,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`scroll-smooth ${inter.variable}`}>
+    <html lang="en" className={`scroll-smooth ${inter.variable}`} data-scroll-behavior="smooth">
       <body className={`${inter.className} min-h-screen flex flex-col bg-[#f8faf9] text-gray-900 antialiased selection:bg-green-600 selection:text-white`}>
         <LanguageProvider>
           <TopBar />
