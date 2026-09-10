@@ -1,6 +1,6 @@
 # Apollo Green Solutions — Intelligent Energy Management & Industrial IoT Platform
 
-> **Live Production URL:** [[https://apollo-energy-web.vercel.app](https://apollo-energy-web.vercel.app)](https://energy-management-website-bice.vercel.app/)
+> **Live Production URL:** [[https://apollo-energy-web.vercel.app](https://apollo-energy-web.vercel.app)]
 
 A modern, high-performance B2B energy management web application built with **Next.js 16 (App Router)**, **TypeScript**, **Tailwind CSS**, **Framer Motion**, and the **Vercel AI SDK**.
 
